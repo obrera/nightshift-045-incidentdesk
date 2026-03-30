@@ -1,0 +1,17 @@
+services:
+  incidentdesk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: incidentdesk045
+    environment:
+      PORT: 3000
+      DATABASE_URL: /app/data/incidentdesk.sqlite
+    ports:
+      - "3000:3000"
+    volumes:
+      - incidentdesk-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  incidentdesk-data:
